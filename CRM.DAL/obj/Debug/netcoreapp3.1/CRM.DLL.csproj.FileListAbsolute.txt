@@ -1,0 +1,4 @@
+C:\Users\Олег\source\repos\CRM System\CRM.DLL\obj\Debug\netcoreapp3.1\CRM.DLL.csprojAssemblyReference.cache
+C:\Users\Олег\source\repos\CRM System\CRM.DLL\obj\Debug\netcoreapp3.1\CRM.DLL.AssemblyInfoInputs.cache
+C:\Users\Олег\source\repos\CRM System\CRM.DLL\obj\Debug\netcoreapp3.1\CRM.DLL.AssemblyInfo.cs
+C:\Users\Олег\source\repos\CRM System\CRM.DLL\obj\Debug\netcoreapp3.1\CRM.DLL.csproj.CoreCompileInputs.cache

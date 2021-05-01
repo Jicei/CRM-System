@@ -1,0 +1,12 @@
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\bin\Debug\netcoreapp3.1\CRM.DAL.deps.json
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\bin\Debug\netcoreapp3.1\CRM.DAL.runtimeconfig.json
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\bin\Debug\netcoreapp3.1\CRM.DAL.runtimeconfig.dev.json
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\bin\Debug\netcoreapp3.1\CRM.DAL.dll
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\bin\Debug\netcoreapp3.1\CRM.DAL.pdb
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.csprojAssemblyReference.cache
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.AssemblyInfoInputs.cache
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.AssemblyInfo.cs
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.dll
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.pdb
+C:\Users\Олег\source\repos\CRM System\CRM.DAL\obj\Debug\netcoreapp3.1\CRM.DAL.genruntimeconfig.cache

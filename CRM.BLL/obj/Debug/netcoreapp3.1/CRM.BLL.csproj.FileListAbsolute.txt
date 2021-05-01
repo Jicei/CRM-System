@@ -1,0 +1,12 @@
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\bin\Debug\netcoreapp3.1\CRM.BLL.deps.json
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\bin\Debug\netcoreapp3.1\CRM.BLL.runtimeconfig.json
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\bin\Debug\netcoreapp3.1\CRM.BLL.runtimeconfig.dev.json
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\bin\Debug\netcoreapp3.1\CRM.BLL.dll
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\bin\Debug\netcoreapp3.1\CRM.BLL.pdb
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.csprojAssemblyReference.cache
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.AssemblyInfoInputs.cache
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.AssemblyInfo.cs
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.dll
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.pdb
+C:\Users\Олег\source\repos\CRM System\CRM.BLL\obj\Debug\netcoreapp3.1\CRM.BLL.genruntimeconfig.cache
