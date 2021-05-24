@@ -15,7 +15,7 @@ namespace CRM.DAL.Entities
         public string Description { get; set; }
         public float Remains { get; set; }
         public Employee Responsible { get; set; }
-        public Employee? ResponsibleId { get; set; }
+        public Guid? ResponsibleId { get; set; }
         public List<ProductInOpportunity> ProductInOpportunity { get; set; } = new List<ProductInOpportunity>();
     }
 }

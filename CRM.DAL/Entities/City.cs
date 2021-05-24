@@ -12,7 +12,7 @@ namespace CRM.DAL.Entities
         public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public Country? Country { get; set; }
+        public Country Country { get; set; }
         public Guid? CountryId { get; set; }
         public List<Company> Companies { get; set; } = new List<Company>();
         public List<Contact> Contact { get; set; } = new List<Contact>();

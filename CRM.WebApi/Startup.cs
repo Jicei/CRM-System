@@ -1,9 +1,15 @@
+using CRM.BLL.MapperProfiles;
+using CRM.BLL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using CRM.BLL.Services;
+using Microsoft.EntityFrameworkCore;
+using CRM.DAL;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace CRM.WebAPi
 {
@@ -26,19 +32,25 @@ namespace CRM.WebAPi
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddMvc();
+            services.AddDbContext<CrmDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("devConnection")));
+            //services.AddMvc();
             services.AddControllers();
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
-             {
+            {
                  c.SwaggerDoc(Configuration.GetSection("SwaggerOptions:Version").Value, new OpenApiInfo
                  {
                      Version = Configuration.GetSection("SwaggerOptions:Version").Value,
                      Title = Configuration.GetSection("SwaggerOptions:Title").Value,
                      Description = Configuration.GetSection("SwaggerOptions:Description").Value
                  });
-             });
+            });
+
+            services.AddAutoMapper(typeof(MapperConfig));
+
+            services.AddTransient<ICityService, CityService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -227,6 +227,9 @@
             "projectReferences": {
               "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.BLL\\CRM.BLL.csproj": {
                 "projectPath": "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.BLL\\CRM.BLL.csproj"
+              },
+              "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj": {
+                "projectPath": "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj"
               }
             }
           }

@@ -11,11 +11,7 @@
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "CRM.DAL": "1.0.0",
-          "Newtonsoft.Json": "13.0.1",
-          "Swashbuckle.AspNetCore": "6.1.4",
-          "Swashbuckle.AspNetCore.Swagger": "6.1.4",
-          "Swashbuckle.AspNetCore.SwaggerGen": "6.1.4",
-          "Swashbuckle.AspNetCore.SwaggerUI": "6.1.4"
+          "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "CRM.BLL.dll": {}
