@@ -1,16 +1,9 @@
-using CRM.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CRM.WebAPi
 {
@@ -36,9 +29,6 @@ namespace CRM.WebAPi
             services.AddMvc();
             services.AddControllers();
             services.AddControllersWithViews();
-
-             services.AddDbContext<CrmDbContext>(options =>
-                 options.UseSqlServer(Configuration.GetConnectionString("devConnection")));
 
             services.AddSwaggerGen(c =>
              {

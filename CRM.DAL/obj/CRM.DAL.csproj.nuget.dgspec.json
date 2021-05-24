@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Олег\\source\\repos\\CRM System\\CRM.DAL\\CRM.DAL.csproj": {}
+    "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Олег\\source\\repos\\CRM System\\CRM.DAL\\CRM.DAL.csproj": {
+    "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Олег\\source\\repos\\CRM System\\CRM.DAL\\CRM.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj",
         "projectName": "CRM.DAL",
-        "projectPath": "C:\\Users\\Олег\\source\\repos\\CRM System\\CRM.DAL\\CRM.DAL.csproj",
+        "projectPath": "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\CRM.DAL.csproj",
         "packagesPath": "C:\\Users\\Олег\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Олег\\source\\repos\\CRM System\\CRM.DAL\\obj\\",
+        "outputPath": "C:\\Users\\Олег\\source\\repos\\CRM-System\\CRM.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -55,23 +55,23 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[3.1.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[3.1.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.14, )"
+              "version": "[3.1.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.14, )"
+              "version": "[3.1.6, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
