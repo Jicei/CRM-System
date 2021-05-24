@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace CRM_System.Controllers
 {
     [EnableCors("CorsApi")]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CityController : ControllerBase
     {
@@ -24,42 +24,42 @@ namespace CRM_System.Controllers
         {
             cityService = _cityService;
         }
-        // GET: api/<CityController>
+        // GET: <CityController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(JsonConvert.SerializeObject( await cityService.GetAllCity(), Formatting.Indented));
         }
 
-        // GET api/<CityController>/5
+        // GET <CityController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(JsonConvert.SerializeObject(await cityService.GetCityById(id), Formatting.Indented));
         }
 
-        // POST api/<CityController>
+        // POST <CityController>
         [HttpPost]
         public async Task<IActionResult> Post(Guid id, [FromBody] CityViewModel city)
         {
             return Ok(await cityService.CreateCity(new CityDTO { Id = id, Name = city.Name, CountryId = city.CountryId }));
         }
 
-        // PUT api/<CityController>/5
+        // PUT <CityController>/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, [FromBody] CityViewModel city)
-        {
-            return Ok(await cityService.UpdateCity(new CityDTO { Id = id, Name = city.Name, CountryId = city.CountryId }));
-        }
-
-        // PATCH api/<CityController>/5
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> Patch(Guid id, [FromBody] CityViewModel city)
         {
             return Ok(await cityService.UpdateFullCity(new CityDTO { Id = id, Name = city.Name, CountryId = city.CountryId }));
         }
 
-        // DELETE api/<CityController>/5
+        // PATCH <CityController>/5
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(Guid id, [FromBody] CityViewModel city)
+        {
+            return Ok(await cityService.UpdateCity(new CityDTO { Id = id, Name = city.Name, CountryId = city.CountryId }));
+        }
+
+        // DELETE <CityController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

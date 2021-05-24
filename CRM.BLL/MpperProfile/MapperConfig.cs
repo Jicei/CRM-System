@@ -10,6 +10,12 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<City, CityDTO>();
             CreateMap<CityDTO, City>();
+
+            CreateMap<Country, CountryDTO>();
+            CreateMap<CountryDTO, Country>();
+
+            CreateMap<Activity, ActivityDTO>();
+            CreateMap<ActivityDTO, Activity>();
         }
     }
 }
