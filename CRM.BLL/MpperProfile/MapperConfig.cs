@@ -16,6 +16,12 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<Activity, ActivityDTO>();
             CreateMap<ActivityDTO, Activity>();
+
+            CreateMap<ActivityManager, ActivityManagerDTO>();
+            CreateMap<ActivityManagerDTO, ActivityManager>();
+
+            CreateMap<ActivityManagerType, ActivityManagerTypeDTO>();
+            CreateMap<ActivityManagerTypeDTO, ActivityManagerType>();
         }
     }
 }
