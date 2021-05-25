@@ -56,6 +56,8 @@ namespace CRM.WebAPi
             services.AddTransient<IActivityManagerService, ActivityManagerService>();
             services.AddTransient<IActivityManagerTypeService, ActivityManagerTypeService>();
             services.AddTransient<IActivityTypeService, ActivityTypeService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IContactService, ContactService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
