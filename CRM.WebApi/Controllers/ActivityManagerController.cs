@@ -1,6 +1,5 @@
 ﻿using CRM.BLL.DTO;
 using CRM.BLL.Interfaces;
-using CRM_System.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

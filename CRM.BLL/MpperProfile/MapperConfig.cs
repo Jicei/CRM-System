@@ -46,6 +46,9 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<LeadType, LeadTypeDTO>();
             CreateMap<LeadTypeDTO, LeadType>();
+
+            CreateMap<Opportunity, OpportunityDTO>();
+            CreateMap<OpportunityDTO, Opportunity>();
         }
     }
 }
