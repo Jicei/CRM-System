@@ -31,6 +31,15 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<Contact, ContactDTO>();
             CreateMap<ContactDTO, Contact>();
+
+            CreateMap<Contract, ContractDTO>();
+            CreateMap<ContractDTO, Contract>();
+
+            CreateMap<Employee, EmployeeDTO>();
+            CreateMap<EmployeeDTO, Employee>();
+
+            CreateMap<EmployeeInRole, EmployeeInRoleDTO>();
+            CreateMap<EmployeeInRoleDTO, EmployeeInRole>();
         }
     }
 }
