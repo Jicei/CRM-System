@@ -52,6 +52,18 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<OpportunityType, OpportunityTypeDTO>();
             CreateMap<OpportunityTypeDTO, OpportunityType>();
+
+            CreateMap<Product, ProductDTO>();
+            CreateMap<ProductDTO, Product>();
+
+            CreateMap<ProductInOpportunity, ProductInOpportunityDTO>();
+            CreateMap<ProductInOpportunityDTO, ProductInOpportunity>();
+
+            CreateMap<Queue, QueueDTO>();
+            CreateMap<QueueDTO, Queue>();
+
+            CreateMap<Role, RoleDTO>();
+            CreateMap<RoleDTO, Role>();
         }
     }
 }

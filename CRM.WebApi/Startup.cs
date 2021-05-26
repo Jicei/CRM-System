@@ -65,6 +65,10 @@ namespace CRM.WebAPi
             services.AddTransient<ILeadTypeService, LeadTypeService>();
             services.AddTransient<IOpportunityService, OpportunityService>();
             services.AddTransient<IOpportunityTypeService, OpportunityTypeService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductInOpportunityService, ProductInOpportunityService>();
+            services.AddTransient<IQueueService, QueueService>();
+            services.AddTransient<IRoleService, RoleService>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
