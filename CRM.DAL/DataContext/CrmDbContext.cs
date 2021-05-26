@@ -27,6 +27,7 @@ namespace CRM.DAL
         public DbSet<ActivityManager> ActivityManagers { get; set; }
         public DbSet<EmployeeInRole> EmployeeInRoles { get; set; }
         public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Lead> Leads { get; set; }
         public CrmDbContext(DbContextOptions<CrmDbContext> options)
             : base(options)
         { }

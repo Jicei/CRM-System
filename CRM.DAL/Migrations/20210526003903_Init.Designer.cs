@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.DAL.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20210524151148_FixResponsible")]
-    partial class FixResponsible
+    [Migration("20210526003903_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -261,7 +261,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("ResponsibleId");
 
-                    b.ToTable("Contract");
+                    b.ToTable("Contracts");
                 });
 
             modelBuilder.Entity("CRM.DAL.Entities.Country", b =>
@@ -362,7 +362,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Lead");
+                    b.ToTable("Leads");
                 });
 
             modelBuilder.Entity("CRM.DAL.Entities.LeadType", b =>

@@ -360,7 +360,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Lead");
+                    b.ToTable("Leads");
                 });
 
             modelBuilder.Entity("CRM.DAL.Entities.LeadType", b =>

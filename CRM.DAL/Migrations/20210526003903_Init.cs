@@ -159,21 +159,14 @@ namespace CRM.DAL.Migrations
                     Price = table.Column<float>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Remains = table.Column<float>(nullable: false),
-                    ResponsibleId1 = table.Column<Guid>(nullable: true),
-                    ResponsibleIdId = table.Column<Guid>(nullable: true)
+                    ResponsibleId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Employees_ResponsibleId1",
-                        column: x => x.ResponsibleId1,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Products_Employees_ResponsibleIdId",
-                        column: x => x.ResponsibleIdId,
+                        name: "FK_Products_Employees_ResponsibleId",
+                        column: x => x.ResponsibleId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -229,7 +222,7 @@ namespace CRM.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Lead",
+                name: "Leads",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -242,15 +235,15 @@ namespace CRM.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lead", x => x.Id);
+                    table.PrimaryKey("PK_Leads", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Lead_Activities_ActivityId",
+                        name: "FK_Leads_Activities_ActivityId",
                         column: x => x.ActivityId,
                         principalTable: "Activities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Lead_LeadTypes_TypeId",
+                        name: "FK_Leads_LeadTypes_TypeId",
                         column: x => x.TypeId,
                         principalTable: "LeadTypes",
                         principalColumn: "Id",
@@ -286,9 +279,9 @@ namespace CRM.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Companies_Lead_LeadId",
+                        name: "FK_Companies_Leads_LeadId",
                         column: x => x.LeadId,
-                        principalTable: "Lead",
+                        principalTable: "Leads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -373,9 +366,9 @@ namespace CRM.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ActivityManagers_Lead_LeadId",
+                        name: "FK_ActivityManagers_Leads_LeadId",
                         column: x => x.LeadId,
-                        principalTable: "Lead",
+                        principalTable: "Leads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -427,6 +420,34 @@ namespace CRM.DAL.Migrations
                         name: "FK_Opportunities_OpportunityTypes_TypeId",
                         column: x => x.TypeId,
                         principalTable: "OpportunityTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Contracts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    DateStart = table.Column<DateTime>(nullable: false),
+                    DateEnd = table.Column<DateTime>(nullable: false),
+                    ResponsibleId = table.Column<Guid>(nullable: true),
+                    OpportunityId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contracts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Contracts_Opportunities_OpportunityId",
+                        column: x => x.OpportunityId,
+                        principalTable: "Opportunities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Contracts_Employees_ResponsibleId",
+                        column: x => x.ResponsibleId,
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -532,6 +553,16 @@ namespace CRM.DAL.Migrations
                 column: "ResponsibleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Contracts_OpportunityId",
+                table: "Contracts",
+                column: "OpportunityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contracts_ResponsibleId",
+                table: "Contracts",
+                column: "ResponsibleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeInRoles_EmployeeId",
                 table: "EmployeeInRoles",
                 column: "EmployeeId");
@@ -542,13 +573,13 @@ namespace CRM.DAL.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lead_ActivityId",
-                table: "Lead",
+                name: "IX_Leads_ActivityId",
+                table: "Leads",
                 column: "ActivityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lead_TypeId",
-                table: "Lead",
+                name: "IX_Leads_TypeId",
+                table: "Leads",
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
@@ -582,14 +613,9 @@ namespace CRM.DAL.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ResponsibleId1",
+                name: "IX_Products_ResponsibleId",
                 table: "Products",
-                column: "ResponsibleId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_ResponsibleIdId",
-                table: "Products",
-                column: "ResponsibleIdId");
+                column: "ResponsibleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Queues_ResponsibleId",
@@ -606,6 +632,9 @@ namespace CRM.DAL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ActivityManagers");
+
+            migrationBuilder.DropTable(
+                name: "Contracts");
 
             migrationBuilder.DropTable(
                 name: "EmployeeInRoles");
@@ -641,7 +670,7 @@ namespace CRM.DAL.Migrations
                 name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Lead");
+                name: "Leads");
 
             migrationBuilder.DropTable(
                 name: "Countries");

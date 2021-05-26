@@ -40,6 +40,9 @@ namespace CRM.BLL.MapperProfiles
 
             CreateMap<EmployeeInRole, EmployeeInRoleDTO>();
             CreateMap<EmployeeInRoleDTO, EmployeeInRole>();
+
+            CreateMap<Lead, LeadDTO>();
+            CreateMap<LeadDTO, Lead>();
         }
     }
 }
