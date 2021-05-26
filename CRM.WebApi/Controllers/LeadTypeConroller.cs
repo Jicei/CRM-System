@@ -16,26 +16,26 @@ namespace CRM_System.Controllers
     [EnableCors("CorsApi")]
     [Route("Company")]
     [ApiController]
-    public class LeadConroller : ControllerBase
+    public class LeadTypeConroller : ControllerBase
     {
-        private readonly ILeadService leadService;
+        private readonly ILeadTypeService leadTypeService;
 
-        public LeadConroller(ILeadService _leadService)
+        public LeadTypeConroller(ILeadTypeService _leadTypeService)
         {
-            leadService = _leadService;
+            leadTypeService = _leadTypeService;
         }
         // GET: <CityController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(JsonConvert.SerializeObject( await leadService.GetAllLead(), Formatting.Indented));
+            return Ok(JsonConvert.SerializeObject( await leadTypeService.GetAllLeadType(), Formatting.Indented));
         }
 
         // GET <CityController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            return Ok(JsonConvert.SerializeObject(await leadService.GetLeadById(id), Formatting.Indented));
+            return Ok(JsonConvert.SerializeObject(await leadTypeService.GetLeadTypeById(id), Formatting.Indented));
         }
 
         // POST <CityController>
@@ -43,15 +43,10 @@ namespace CRM_System.Controllers
         public async Task<IActionResult> Post(Guid id, [FromBody] LeadViewModel lead)
         {
 
-            return Ok(await leadService.CreateLead(new LeadDTO
+            return Ok(await leadTypeService.CreateLeadType(new LeadTypeDTO
             { 
                 Id = id, 
-                Name = lead.Name, 
-                TypeId = lead.TypeId,
-                TelephoneNumber = lead.TelephoneNumber,
-                Email = lead.Email,
-                Description = lead.Email,
-                ActivityId = lead.ActivityId
+                Name = lead.Name
             }));
         }
 
@@ -59,15 +54,10 @@ namespace CRM_System.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, [FromBody] LeadViewModel lead)
         {
-            return Ok(await leadService.UpdateFullLead(new LeadDTO
+            return Ok(await leadTypeService.UpdateFullLeadType(new LeadTypeDTO
             {
                 Id = id,
-                Name = lead.Name,
-                TypeId = lead.TypeId,
-                TelephoneNumber = lead.TelephoneNumber,
-                Email = lead.Email,
-                Description = lead.Email,
-                ActivityId = lead.ActivityId
+                Name = lead.Name
             }));
         }
 
@@ -75,15 +65,10 @@ namespace CRM_System.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> Patch(Guid id, [FromBody] LeadViewModel lead)
         {
-            return Ok(await leadService.UpdateLead(new LeadDTO
+            return Ok(await leadTypeService.UpdateLeadType(new LeadTypeDTO
             {
                 Id = id,
-                Name = lead.Name,
-                TypeId = lead.TypeId,
-                TelephoneNumber = lead.TelephoneNumber,
-                Email = lead.Email,
-                Description = lead.Email,
-                ActivityId = lead.ActivityId
+                Name = lead.Name
             }));
         }
 
@@ -91,7 +76,7 @@ namespace CRM_System.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            return Ok(await leadService.DeleteLead(id));
+            return Ok(await leadTypeService.DeleteLeadType(id));
         }
     }
 }
