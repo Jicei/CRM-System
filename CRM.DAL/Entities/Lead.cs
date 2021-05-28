@@ -13,6 +13,7 @@ namespace CRM.DAL.Entities
         public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public DateTime CreatedOn { get; set; }
         public LeadType Type { get; set; }
         public Guid? TypeId { get; set; }
         public string TelephoneNumber { get; set; }

@@ -6,6 +6,7 @@ using CRM.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CRM.BLL.Services
@@ -83,6 +84,5 @@ namespace CRM.BLL.Services
 
             return await db.SaveChangesAsync();
         }
-
     }
 }

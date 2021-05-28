@@ -4,14 +4,16 @@ using CRM.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CRM.DAL.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    partial class CrmDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210528132339_FixOpportunity")]
+    partial class FixOpportunity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -403,9 +405,6 @@ namespace CRM.DAL.Migrations
 
                     b.Property<float>("Discount")
                         .HasColumnType("real");
-
-                    b.Property<bool>("IsFisicalClient")
-                        .HasColumnType("bit");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");

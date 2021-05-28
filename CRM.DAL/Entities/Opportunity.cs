@@ -12,6 +12,8 @@ namespace CRM.DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public OpportunityType Type { get; set; }
+        public Guid? TypeId { get; set; }
+        public bool IsFisicalClient { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public TimeSpan TimeWait { get; set; }

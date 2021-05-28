@@ -11,6 +11,7 @@ namespace CRM.BLL.DTO
         public Guid Id { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
+        public Guid? TypeId { get; set; }
         public TimeSpan TimeWait { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }

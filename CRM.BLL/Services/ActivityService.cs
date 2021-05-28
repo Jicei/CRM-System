@@ -6,6 +6,7 @@ using CRM.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CRM.BLL.Services
@@ -76,6 +77,63 @@ namespace CRM.BLL.Services
             db.Activities.Remove(activity);
 
             return await db.SaveChangesAsync();
+        }
+        public IQueryable<ActivityABCXYZAnalysisDTO> ProductABCXYZanalysis(DateTime dateFrom, DateTime dateTo)
+        {
+            var leadCount = db.Leads.Where(l => l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo).Count();
+            var leadCountGroupByActivity = from l in db.Leads
+                                           join a in db.Activities
+                                           on l.ActivityId equals a.Id
+                                           where l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo
+                                           group a by new { l.Id, l.Name } into leadActivityGroup
+                                           orderby leadActivityGroup.Count() descending
+                                           select new ActivityABCXYZAnalysisDTO
+                                           {
+                                               Id = leadActivityGroup.Key.Id,
+                                               Name = leadActivityGroup.Key.Name,
+                                               Count = leadActivityGroup.Count(),
+                                           };
+
+            var leadCountGroupByActivityAverage = leadCountGroupByActivity.Average(l => l.Count);
+
+            var sigma = Math.Sqrt(leadCountGroupByActivity.Sum(l => Math.Pow((l.Count - leadCountGroupByActivityAverage), 2)) / leadCountGroupByActivity.Count());
+            float leadPartQuantity = 0;
+            double coefficientVariation = 0;
+
+            foreach (var lead in leadCountGroupByActivity)
+            {
+                if (leadPartQuantity <= 0.8)
+                {
+                    lead.Category = "A";
+                }
+                else if (leadPartQuantity <= 0.95)
+                {
+                    lead.Category = "B";
+                }
+                else
+                {
+                    lead.Category = "C";
+                }
+                lead.PartCount = lead.Count / leadCount;
+                leadPartQuantity += lead.PartCount;
+
+                coefficientVariation = sigma / lead.Count;
+
+                if (coefficientVariation <= 0.1)
+                {
+                    lead.Category = string.Concat(lead.Category, "X");
+                }
+                else if (coefficientVariation <= 0.25)
+                {
+                    lead.Category = string.Concat(lead.Category, "Y");
+                }
+                else
+                {
+                    lead.Category = string.Concat(lead.Category, "Z");
+                }
+            }
+
+            return leadCountGroupByActivity;
         }
     }
 }

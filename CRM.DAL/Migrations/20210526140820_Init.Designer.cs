@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.DAL.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20210526003903_Init")]
+    [Migration("20210526140820_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

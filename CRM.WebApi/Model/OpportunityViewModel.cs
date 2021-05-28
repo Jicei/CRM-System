@@ -6,6 +6,7 @@ namespace CRM_System.Model
     {
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
+        public Guid? TypeId { get; set; }
         public TimeSpan TimeWait { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }

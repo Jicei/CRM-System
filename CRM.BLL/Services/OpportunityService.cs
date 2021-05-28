@@ -45,6 +45,7 @@ namespace CRM.BLL.Services
 
             opportunity.DateStart = opportunityDTO.DateStart != null ? opportunityDTO.DateStart : opportunity.DateStart;
             opportunity.DateEnd = opportunityDTO.DateEnd != null ? opportunityDTO.DateEnd : opportunity.DateEnd;
+            opportunity.TypeId = opportunityDTO.TypeId != null ? opportunityDTO.TypeId : opportunity.TypeId;
             opportunity.TimeWait = opportunityDTO.TimeWait != null ? opportunityDTO.TimeWait : opportunity.TimeWait;
             opportunity.Description = opportunityDTO.Description != null ? opportunityDTO.Description : opportunity.Description;
             opportunity.Price = opportunityDTO.Price != 0 ? opportunityDTO.Price : 0;
@@ -64,6 +65,7 @@ namespace CRM.BLL.Services
 
             opportunity.DateStart = opportunityDTO.DateStart;
             opportunity.DateEnd = opportunityDTO.DateEnd;
+            opportunity.TypeId = opportunityDTO.TypeId;
             opportunity.TimeWait = opportunityDTO.TimeWait;
             opportunity.Description = opportunityDTO.Description;
             opportunity.Price = opportunityDTO.Price;
