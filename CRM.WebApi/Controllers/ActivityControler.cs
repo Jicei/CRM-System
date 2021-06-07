@@ -88,5 +88,10 @@ namespace CRM_System.Controllers
         {
             return Ok(await activityService.DeleteActivity(id));
         }
+        [HttpGet("AbcXyz")]
+        public IActionResult GetAbcXyz()
+        {
+            return Ok(JsonConvert.SerializeObject(activityService.ActivityABCXYZanalysis(), Formatting.Indented));
+        }
     }
 }

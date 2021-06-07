@@ -78,21 +78,21 @@ namespace CRM.BLL.Services
 
             return await db.SaveChangesAsync();
         }
-        public IQueryable<ActivityABCXYZAnalysisDTO> ProductABCXYZanalysis(DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<ActivityABCXYZAnalysisDTO> ActivityABCXYZanalysis(/*DateTime dateFrom, DateTime dateTo*/)
         {
-            var leadCount = db.Leads.Where(l => l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo).Count();
-            var leadCountGroupByActivity = from l in db.Leads
+            var leadCount = db.Leads/*.Where(l => l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo)*/.Count();
+            var leadCountGroupByActivity = (from l in db.Leads
                                            join a in db.Activities
-                                           on l.ActivityId equals a.Id
-                                           where l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo
-                                           group a by new { l.Id, l.Name } into leadActivityGroup
+                                           on l.ActivityId equals a.Id  
+                                          // where l.CreatedOn >= dateFrom && l.CreatedOn <= dateTo
+                                           group a by new { a.Id, a.Name } into leadActivityGroup
                                            orderby leadActivityGroup.Count() descending
                                            select new ActivityABCXYZAnalysisDTO
                                            {
                                                Id = leadActivityGroup.Key.Id,
                                                Name = leadActivityGroup.Key.Name,
                                                Count = leadActivityGroup.Count(),
-                                           };
+                                           }).ToList();
 
             var leadCountGroupByActivityAverage = leadCountGroupByActivity.Average(l => l.Count);
 
@@ -114,7 +114,7 @@ namespace CRM.BLL.Services
                 {
                     lead.Category = "C";
                 }
-                lead.PartCount = lead.Count / leadCount;
+                lead.PartCount = (float)lead.Count / leadCount;
                 leadPartQuantity += lead.PartCount;
 
                 coefficientVariation = sigma / lead.Count;

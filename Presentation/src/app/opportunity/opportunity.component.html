@@ -1,0 +1,120 @@
+<h1>Продажі</h1>
+<input type="button" value="Додати" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Дата створення</td>
+            <td>Дата закінчення</td>
+            <td>Тип</td>
+            <td>Опис</td>
+            <td>Ціна</td>
+            <td>Знижка</td>
+            <td>Контакт</td>
+            <td>Компанія</td>
+            <td>Відповідальний</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of opportunities">
+            <ng-template [ngIf]="opportunity?.Id != c.Id" [ngIfElse]="edit">
+                <td>{{c.DateStart}}</td>
+                <td>{{c.DateEnd}}</td>
+                <td>{{c.TypeId}}</td>
+                <td>{{c.Description}}</td>
+                <td>{{c.Price}}</td>
+                <td>{{c.Discount}}</td>
+                <td>{{c.ContactId}}</td>
+                <td>{{c.CompanyId}}</td>
+                <td>{{c.ResponsibleId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editOpportunity (c)">Змінити</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c)">Видалити</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<div id="divChart">
+    <canvas id="mychart"></canvas>
+</div>
+ 
+<!--шаблон для редактирования-->
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.DateStart" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.DateEnd" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.TypeId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.Description" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.Price" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.Discount" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.ContactId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.CompanyId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="opportunity.ResponsibleId" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+ 
+<!--шаблон для добавления-->
+<ng-template #create>
+    <div class="form-group">
+        <label>Дата створення</label>
+        <input type="text" [(ngModel)]="opportunity.DateStart" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата закінчення</label>
+        <input type="text" [(ngModel)]="opportunity.DateEnd" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Тип</label>
+        <input type="text" [(ngModel)]="opportunity.TypeId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Опис</label>
+        <input type="text" [(ngModel)]="opportunity.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ціна</label>
+        <input type="text" [(ngModel)]="opportunity.Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Знижка</label>
+        <input type="text" [(ngModel)]="opportunity.Discount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Контакт</label>
+        <input type="text" [(ngModel)]="opportunity.ContactId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Компанія</label>
+        <input type="text" [(ngModel)]="opportunity.CompanyId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Відповідальний</label>
+        <input type="text" [(ngModel)]="opportunity.ResponsibleId" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

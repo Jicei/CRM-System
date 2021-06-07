@@ -76,19 +76,19 @@ namespace CRM.BLL.Services
 
             return await db.SaveChangesAsync();
         }
-        public IQueryable<ProductABCFMRAnalysisDTO> ProductABCanalysis(DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<ProductABCFMRAnalysisDTO> ProductABCFMRanalysis(/*DateTime dateFrom, DateTime dateTo*/)
         {
-            var opportunityTotalSum = db.Opportunities.Where(o => o.DateEnd >= dateFrom && o.DateEnd <= dateTo).Sum(o => o.Price);
+            var opportunityTotalSum = db.Opportunities/*.Where(o => o.DateEnd >= dateFrom && o.DateEnd <= dateTo)*/.Sum(o => o.Price);
 
             var totalQuantity = (from o in db.Opportunities
-                                 join po in db.ProductInOpportunities on o.Id equals po.ProductId
-                                 where o.DateEnd >= dateFrom && o.DateEnd <= dateTo
+                                 join po in db.ProductInOpportunities on o.Id equals po.OpportunityId
+                                 //where o.DateEnd >= dateFrom && o.DateEnd <= dateTo
                                  select new { po.Id }).Count();
 
-            var productsPartAmount = from o in db.Opportunities
-                                     join po in db.ProductInOpportunities on o.Id equals po.ProductId
+            var productsPartAmount = (from o in db.Opportunities
+                                     join po in db.ProductInOpportunities on o.Id equals po.OpportunityId
                                      join p in db.Products on po.ProductId equals p.Id
-                                     where o.DateEnd >= dateFrom && o.DateEnd <= dateTo
+                                     //where o.DateEnd >= dateFrom && o.DateEnd <= dateTo
                                      group p by new { p.Id, p.Name } into productGroup
                                      orderby productGroup.Sum(p => p.Price) descending
                                      select new ProductABCFMRAnalysisDTO
@@ -97,10 +97,10 @@ namespace CRM.BLL.Services
                                          ProductName = productGroup.Key.Name,
                                          Amount = productGroup.Sum(p => p.Price),
                                          Quantity = (from o in db.Opportunities
-                                                     join po in db.ProductInOpportunities on o.Id equals po.ProductId
-                                                     where o.DateEnd >= dateFrom && o.DateEnd <= dateTo && po.ProductId == productGroup.Key.Id
+                                                     join po in db.ProductInOpportunities on o.Id equals po.OpportunityId
+                                                     where /*o.DateEnd >= dateFrom && o.DateEnd <= dateTo &&*/ po.ProductId == productGroup.Key.Id
                                                      select new { po.Id }).Count()
-                                     };
+                                     }).ToList();
             float partAmount = 0;
             float partQuantity = 0;
             foreach (var pr in productsPartAmount)
@@ -119,17 +119,17 @@ namespace CRM.BLL.Services
                 }
                 pr.PartAmount = pr.Amount / opportunityTotalSum;
                 partAmount += pr.PartAmount;
-                if (partAmount <= 0.8)
+                if (partQuantity <= 0.8)
                 {
-                    pr.Category = string.Concat(pr.Category, "X");
+                    pr.Category = string.Concat(pr.Category, "F");
                 }
-                else if (partAmount <= 0.95)
+                else if (partQuantity <= 0.95)
                 {
-                    pr.Category = string.Concat(pr.Category, "Y");
+                    pr.Category = string.Concat(pr.Category, "M");
                 }
                 else
                 {
-                    pr.Category = string.Concat(pr.Category, "Z");
+                    pr.Category = string.Concat(pr.Category, "R");
                 }
                 pr.PartQuantity = pr.Quantity / totalQuantity;
                 partQuantity += pr.PartQuantity;

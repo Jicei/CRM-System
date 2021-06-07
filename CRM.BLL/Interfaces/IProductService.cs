@@ -15,5 +15,6 @@ namespace CRM.BLL.Interfaces
         Task<int> UpdateProduct(ProductDTO employeeDTO);
         Task<int> UpdateFullProduct(ProductDTO employeeDTO);
         Task<int> DeleteProduct(Guid Id);
+        IEnumerable<ProductABCFMRAnalysisDTO> ProductABCFMRanalysis();
     }
 }

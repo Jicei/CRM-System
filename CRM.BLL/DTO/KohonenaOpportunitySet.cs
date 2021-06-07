@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CRM.BLL.DTO
 {
-    class KohonenaOpportunitySet
+    public class KohonenaOpportunitySet
     {
         public Guid? ClientId { get; set; }
         public bool IsFisicalClient { get; set; }

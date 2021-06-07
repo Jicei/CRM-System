@@ -1,0 +1,112 @@
+<h1>Маркетингові заходи</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Назва</td>
+            <td>Дата створення</td>
+            <td>Дата почтатку</td>
+            <td>Дата закінчення</td>
+            <td>Тип</td>
+            <td>Відповідальний</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of activities">
+            <ng-template [ngIf]="activity?.Id != c.Id" [ngIfElse]="edit">
+                <td>{{c.Name}}</td>
+                <td>{{c.CreatedOn}}</td>
+                <td>{{c.DateStart}}</td>
+                <td>{{c.DateEnd}}</td>
+                <td>{{c.TypeActivityId}}</td>
+                <td>{{c.ResponsibleId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editActivity (c)">Змінити</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c)">Видалити</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<h2>ABC-XYZ Аналіз</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Назва</td>
+            <td>Кількість</td>
+            <td>Частина</td>
+            <td>Категорія</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of activitiesAbcXyz">
+            <td>{{a.Name}}</td>
+            <td>{{a.Count}}</td>
+            <td>{{a.PartCount}}</td>
+            <td>{{a.Category}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="divChart">
+    <canvas id="mychart"></canvas>
+</div>
+
+<!--шаблон для редактирования-->
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="activity.Name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="activity.CreatedOn" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="activity.DateStart" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="activity.DateEnd" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="activity.TypeActivityId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="activity.ResponsibleId" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+ 
+<!--шаблон для добавления-->
+<ng-template #create>
+    <div class="form-group">
+        <label>Назва</label>
+        <input type="text" [(ngModel)]="activity.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата створення</label>
+        <input type="text" [(ngModel)]="activity.CreatedOn" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата почтатку</label>
+        <input type="text" [(ngModel)]="activity.DateStart" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Дата закінчення</label>
+        <input type="text" [(ngModel)]="activity.DateEnd" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Тип</label>
+        <input type="text" [(ngModel)]="activity.TypeActivityId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Відповідальний</label>
+        <input type="text" [(ngModel)]="activity.ResponsibleId" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

@@ -88,5 +88,11 @@ namespace CRM_System.Controllers
         {
             return Ok(await productService.DeleteProduct(id));
         }
+
+        [HttpGet("ABCFMR")]
+        public IActionResult GetABCFMR()
+        {
+            return Ok(JsonConvert.SerializeObject( productService.ProductABCFMRanalysis(), Formatting.Indented));
+        }
     }
 }

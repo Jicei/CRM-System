@@ -1,0 +1,125 @@
+<h1>Контакти</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Ім'я</td>
+            <td>Прізвище</td>
+            <td>По батькові</td>
+            <td>Телефон</td>
+            <td>Емейл</td>
+            <td>Опис</td>
+            <td>Компанія</td>
+            <td>Відповідальний</td>
+            <td>Країна</td>
+            <td>Місто</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of contacts">
+            <ng-template [ngIf]="contact?.Id != c.Id" [ngIfElse]="edit">
+                <td>{{c.Name}}</td>
+                <td>{{c.Surname}}</td>
+                <td>{{c.Patronymic}}</td>
+                <td>{{c.Telephone}}</td>
+                <td>{{c.Email}}</td>
+                <td>{{c.Description}}</td>
+                <td>{{c.CompanyId}}</td>
+                <td>{{c.ResponsibleId}}</td>
+                <td>{{c.CountryId}}</td>
+                <td>{{c.CityId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editContact (c)">Змінити</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c)">Видалити</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+ 
+<!--шаблон для редактирования-->
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="contact.Name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.Surname" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.Patronymic" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.Telephone" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.Email" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.Description" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.CompanyId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.ResponsibleId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.CountryId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="contact.CityId" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+ 
+<!--шаблон для добавления-->
+<ng-template #create>
+    <div class="form-group">
+        <label>Ім'я</label>
+        <input type="text" [(ngModel)]="contact.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Прізвище</label>
+        <input type="text" [(ngModel)]="contact.Surname" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>По батькові</label>
+        <input type="text" [(ngModel)]="contact.Patronymic" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Телефон</label>
+        <input type="text" [(ngModel)]="contact.Telephone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Емейл</label>
+        <input type="text" [(ngModel)]="contact.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Опис</label>
+        <input type="text" [(ngModel)]="contact.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Компанія</label>
+        <input type="text" [(ngModel)]="contact.CompanyId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Відповідальний</label>
+        <input type="text" [(ngModel)]="contact.ResponsibleId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Країна</label>
+        <input type="text" [(ngModel)]="contact.CountryId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Місто</label>
+        <input type="text" [(ngModel)]="contact.CityId" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

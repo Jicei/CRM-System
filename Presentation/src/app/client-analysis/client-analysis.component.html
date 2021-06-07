@@ -1,0 +1,30 @@
+<h1>Клієнти</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Ім'я</td>
+            <td>Давність</td>
+            <td>Частота</td>
+            <td>Сума продажу</td>
+            <td>RFM</td>
+            <td>Нейрона мережа Кохонена</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of clients">
+            <ng-template>
+                <td>{{c.ClientName}}</td>
+                <td>{{c.Recency}}</td>
+                <td>{{c.Frequency}}</td>
+                <td>{{c.MonetaryValue}}</td>
+                <td>{{c.ClassRfm}}</td>
+                <td>{{c.ClassKohonena}}</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<div id="divChart">
+    <canvas id="mychart">{{ chart }}</canvas>
+    <canvas id="rfmchart">{{ chart }}</canvas>
+</div>

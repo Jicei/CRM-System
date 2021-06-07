@@ -19,5 +19,6 @@ namespace CRM.BLL.Interfaces
 
         public Task<int> UpdateFullActivity(ActivityDTO activityDTO);
         public Task<int> DeleteActivity(Guid id);
+        IEnumerable<ActivityABCXYZAnalysisDTO> ActivityABCXYZanalysis();
     }
 }

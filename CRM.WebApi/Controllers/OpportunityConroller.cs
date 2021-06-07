@@ -17,10 +17,12 @@ namespace CRM_System.Controllers
     public class OpportunityConroller : ControllerBase
     {
         private readonly IOpportunityService opportunityService;
+        private readonly IProductService productService;
 
-        public OpportunityConroller(IOpportunityService _opportunityService)
+        public OpportunityConroller(IOpportunityService _opportunityService, IProductService _productService)
         {
             opportunityService = _opportunityService;
+            productService = _productService;
         }
         // GET: <CityController>
         [HttpGet]
@@ -99,6 +101,11 @@ namespace CRM_System.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await opportunityService.DeleteOpportunity(id));
+        }
+        [HttpGet("AbcFmr")]
+        public IActionResult GetAbcFmr()
+        {
+            return Ok(JsonConvert.SerializeObject(productService.ProductABCFMRanalysis()));
         }
     }
 }

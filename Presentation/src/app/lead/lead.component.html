@@ -1,0 +1,89 @@
+<h1>Ліди</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Назва</td>
+            <td>Тип</td>
+            <td>Телефоний номер</td>
+            <td>Емейл</td>
+            <td>Опис</td>
+            <td>Ресурс</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of leads">
+            <ng-template [ngIf]="lead?.Id != c.Id" [ngIfElse]="edit">
+                <td>{{c.Name}}</td>
+                <td>{{c.TypeId}}</td>
+                <td>{{c.TelephoneNumber}}</td>
+                <td>{{c.Email}}</td>
+                <td>{{c.Description}}</td>
+                <td>{{c.ActivityId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editLead (c)">Змінити</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c)">Видалити</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+ 
+<!--шаблон для редактирования-->
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="lead.Name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="lead.TypeId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="lead.TelephoneNumber" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="lead.Email" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="lead.Description" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="lead.ActivityId" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+ 
+<!--шаблон для добавления-->
+<ng-template #create>
+    <div class="form-group">
+        <label>Назва</label>
+        <input type="text" [(ngModel)]="lead.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Тип</label>
+        <input type="text" [(ngModel)]="lead.TypeId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Телефоний номер</label>
+        <input type="text" [(ngModel)]="lead.TelephoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Емейл</label>
+        <input type="text" [(ngModel)]="lead.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Опис</label>
+        <input type="text" [(ngModel)]="lead.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ресурс</label>
+        <input type="text" [(ngModel)]="lead.ActivityId" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>
