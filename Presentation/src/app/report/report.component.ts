@@ -20,10 +20,10 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPrediction();
+    this.getLinePrediction();
   }
 
-  getPrediction() {
+  getLinePrediction() {
     this.dataService.getLinePrediction()
     .subscribe((data: Report[]) => {
       this.prediction = data;
@@ -32,15 +32,15 @@ export class ReportComponent implements OnInit {
   }
 
   showChartLinePrediction() {
-    let time;
     let labelsPred = this.prediction.map((pred:Report) => {
-      let monthNames = [ 'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December' ];
+      let monthNames = [ 'Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень',
+      'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень' ];
       return pred.Year! + ' ' + monthNames[pred.Month! - 1]
     });
     let dataPred = this.prediction.map((pred:Report) => {
       return pred.Amount!
     });
+    
     var chart = new Chart("mychart", {
       type: 'line',
       data: {
@@ -52,6 +52,22 @@ export class ReportComponent implements OnInit {
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1
         }]
+      },
+      options : {
+        scales: {
+          y: {
+              title: {
+                text:'Продажі',
+                display: true,
+              }
+          },
+          x: {
+            title: {
+              text:'Час',
+              display: true,
+            }
+          },
+        }
       }
     });
   }

@@ -12,5 +12,8 @@ namespace CRM.BLL.Interfaces
 
         public Task<IEnumerable<TopClientDTO>> TopClient();
         public Task<IEnumerable<PredictionDTO>> LinePrediction();
+        public Task<IEnumerable<PredictionDTO>> AveragePrediction();
+        public Task<IEnumerable<PredictionDTO>> LineMNK();
+        public Task<IEnumerable<PredictionDTO>> IndicativeMNK();
     }
 }

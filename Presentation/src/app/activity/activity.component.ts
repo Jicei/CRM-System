@@ -18,12 +18,10 @@ export class ActivityComponent implements OnInit {
   activities: Activity[];
   activitiesAbcXyz: ActivityAbcXyz[];
   tableMode: boolean = true;
-  activity2: ActivityAbcXyz;
 
   constructor(private dataService: DataActivityService, private cdr:ChangeDetectorRef) {
     this.activities = [];
-    this.activitiesAbcXyz = [ new ActivityAbcXyz(undefined, 'lolol')];
-    this.activity2 = new ActivityAbcXyz(undefined, 'lolol');
+    this.activitiesAbcXyz = [];
    }
 
 
@@ -91,43 +89,53 @@ export class ActivityComponent implements OnInit {
     var chart = new Chart("mychart", {
       type: 'bar',
       data: {
-          labels:  lablesClass,//["AX", "AY", "AZ", "BX", "BY", "BZ",  "CX", "CY", "CZ"],
+          labels:  lablesClass,
           datasets: [{
               label: 'Класифікація згідно ABC-XYZ аналізу',
-              data: dataClass,//[10,3,5,8,9,6,3,8,7],
+              data: dataClass,
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(187, 112, 89, 0.2)',
-                  'rgba(114, 159, 100, 0.2)',
-                  'rgba(231, 142, 68, 0.2)',
-                  'rgba(16, 48, 68, 0.2)'
+                  'rgba(255, 99, 132, 0.4)',
+                  'rgba(54, 162, 235, 0.4)',
+                  'rgba(255, 206, 86, 0.4)',
+                  'rgba(75, 192, 192, 0.4)',
+                  'rgba(153, 102, 255, 0.4)',
+                  'rgba(255, 159, 64, 0.4)',
+                  'rgba(187, 112, 89, 0.4)',
+                  'rgba(114, 159, 100, 0.4)',
+                  'rgba(231, 142, 68, 0.4)',
+                  'rgba(16, 48, 68, 0.4)'
               ],
               borderColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(187, 112, 89, 0.2)',
-                'rgba(114, 159, 100, 0.2)',
-                'rgba(231, 142, 68, 0.2)',
-                'rgba(16, 48, 68, 0.2)'
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)',
+                'rgba(187, 112, 89, 0.4)',
+                'rgba(114, 159, 100, 0.4)',
+                'rgba(231, 142, 68, 0.4)',
+                'rgba(16, 48, 68, 0.4)'
               ],
               borderWidth: 1
           }]
       },
       options: {
-          scales: {
-              y: {
-                  beginAtZero: true
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                  text:'Кількість маркетингових заходів',
+                  display: true,
+                }
+            },
+            x: {
+              title: {
+                text:'Група',
+                display: true,
               }
-          }
+            },
+        }
       }
     });
   }

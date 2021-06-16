@@ -5,5 +5,6 @@ export enum ApiPaths {
     Lead = 'Lead',
     Opportunity = 'Opportunity',
     Activity = 'Activity',
-    Report = 'Report'
+    Report = 'Report',
+    ActivityManager = 'ActivityManager'
 }

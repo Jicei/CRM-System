@@ -28,5 +28,20 @@ namespace CRM_System.Controllers
         {
             return Ok(JsonConvert.SerializeObject( await reportService.LinePrediction(), Formatting.Indented));
         }
+        [HttpGet("AveragePrediction")]
+        public async Task<IActionResult> GetAverage()
+        {
+            return Ok(JsonConvert.SerializeObject(await reportService.AveragePrediction(), Formatting.Indented));
+        }
+        [HttpGet("LineMnk")]
+        public async Task<IActionResult> GetLineMnk()
+        {
+            return Ok(JsonConvert.SerializeObject(await reportService.LineMNK(), Formatting.Indented));
+        }
+        [HttpGet("IndicativeMnk")]
+        public async Task<IActionResult> GetIndicativeMNK()
+        {
+            return Ok(JsonConvert.SerializeObject(await reportService.IndicativeMNK(), Formatting.Indented));
+        }
     }
 }

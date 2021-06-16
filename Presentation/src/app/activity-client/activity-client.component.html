@@ -1,1 +1,80 @@
-<p>activity-client works!</p>
+<h1>Маркетингові заходи</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Назва</td>
+            <td>Тип активності</td>
+            <td>Опис</td>
+            <td>Контакт</td>
+            <td>Відповідальний</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of clientActivities">
+            <ng-template [ngIf]="clientActivity?.Id != c.Id" [ngIfElse]="edit">
+                <td>{{c.Name}}</td>
+                <td>{{c.ActivityManagerTypeId}}</td>
+                <td>{{c.Description}}</td>
+                <td>{{c.ContactId}}</td>
+                <td>{{c.ResponsibleId}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editClientActivity(c)">Змінити</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c)">Видалити</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<!--шаблон для редактирования-->
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="clientActivity.Name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="clientActivity.ActivityManagerTypeId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="clientActivity.Description" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="clientActivity.ContactId" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="clientActivity.ResponsibleId" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+ 
+<!--шаблон для добавления-->
+<ng-template #create>
+    <div class="form-group">
+        <label>Назва</label>
+        <input type="text" [(ngModel)]="clientActivity.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Тип активності</label>
+        <input type="text" [(ngModel)]="clientActivity.ActivityManagerTypeId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Опис</label>
+        <input type="text" [(ngModel)]="clientActivity.Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Контакт</label>
+        <input type="text" [(ngModel)]="clientActivity.ContactId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Відповідальний</label>
+        <input type="text" [(ngModel)]="clientActivity.ResponsibleId" class="form-control" />
+    </div>
+    <div>
+        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </div>
+</ng-template>

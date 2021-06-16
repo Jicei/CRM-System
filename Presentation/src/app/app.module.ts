@@ -23,7 +23,8 @@ const appRoutes: Routes =[
   { path: 'lead', component: LeadComponent},
   { path: 'opportunity', component: OpportunityComponent},
   { path: 'activity', component: ActivityComponent},
-  { path: 'report', component: ReportComponent}
+  { path: 'report', component: ReportComponent},
+  { path: 'activity-client', component: ActivityClientComponent}
 ];
 
 
